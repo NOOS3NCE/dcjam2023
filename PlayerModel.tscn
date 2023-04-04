@@ -1,0 +1,157 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm22el8s1asi3"]
+
+[ext_resource type="PackedScene" uid="uid://dyk034is1t55s" path="res://animated__rpg_character_kit_GLTF/scene.gltf" id="1_pocid"]
+
+[node name="PlayerModel" instance=ExtResource("1_pocid")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4" index="0"]
+bones/2/position = Vector3(0, 62.2258, -10.0349)
+bones/2/rotation = Quaternion(0.0727889, -0.0978347, 0.00415194, 0.992529)
+bones/3/position = Vector3(-2.38419e-07, 10.7773, -2.84788)
+bones/3/rotation = Quaternion(0.16696, 0.108149, -0.0142008, 0.979912)
+bones/4/position = Vector3(0, 13.4104, -1.32635)
+bones/4/rotation = Quaternion(-0.0940377, 0.00200062, -0.0030475, 0.995562)
+bones/5/rotation = Quaternion(-0.000938256, 0.0626, -0.0326884, 0.997503)
+bones/7/position = Vector3(-6.25849e-07, 3.86568, -0.0879021)
+bones/7/rotation = Quaternion(-0.155609, -0.0572463, 0.0215675, 0.985923)
+bones/8/position = Vector3(-6.72262, 0.338799, 0.767708)
+bones/9/position = Vector3(-0.01017, -0.663778, 6.50527)
+bones/9/rotation = Quaternion(0.067021, -0.677958, 0.224722, 0.696693)
+bones/9/scale = Vector3(0.999999, 1, 0.999999)
+bones/10/position = Vector3(0.521202, -0.32869, 26.8313)
+bones/10/rotation = Quaternion(0.429878, -0.142923, -0.155519, 0.877833)
+bones/11/position = Vector3(-0.639011, 0.857342, 19.9707)
+bones/11/rotation = Quaternion(-0.0661528, -0.0828951, 0.144395, 0.98382)
+bones/12/position = Vector3(0.396704, -2.18814, 2.69508)
+bones/12/rotation = Quaternion(-0.0703304, -0.397832, 0.891368, -0.205539)
+bones/13/position = Vector3(-0.244903, -0.0718384, 3.28009)
+bones/14/position = Vector3(1.70852, 2.00956, 6.62993)
+bones/14/rotation = Quaternion(-0.108644, -0.149709, 0.0645705, 0.980619)
+bones/15/position = Vector3(0.0887359, -0.0212021, 4.34728)
+bones/15/rotation = Quaternion(2.27897e-08, -0.19509, -2.12704e-07, 0.980785)
+bones/15/scale = Vector3(1, 0.999997, 0.999998)
+bones/16/position = Vector3(-1.94156, 0.57756, 5.77708)
+bones/16/scale = Vector3(0.000999987, 0.000999987, 0.000999987)
+bones/17/position = Vector3(-1.28697, 1.84966, 6.85844)
+bones/17/scale = Vector3(0.000999987, 0.000999987, 0.000999987)
+bones/18/position = Vector3(-0.637493, 0.941521, 4.64994)
+bones/18/scale = Vector3(0.000999987, 0.000999987, 0.000999987)
+bones/19/position = Vector3(-0.699219, -0.03125, -22.6445)
+bones/20/position = Vector3(0.0253906, 8.17188, 0.582031)
+bones/21/position = Vector3(-0.154297, 15.9023, -4.70313)
+bones/22/position = Vector3(0.0253906, -8.54688, 0.714844)
+bones/23/position = Vector3(-0.150391, -15.1797, -4.88672)
+bones/24/position = Vector3(-1.21091, 0.143585, 5.5761)
+bones/24/scale = Vector3(0.000999987, 0.000999987, 0.000999987)
+bones/25/position = Vector3(6.72262, 0.338783, 0.767712)
+bones/26/position = Vector3(0.0101547, -0.663866, 6.50522)
+bones/26/rotation = Quaternion(-0.143725, 0.640472, 0.315667, 0.685195)
+bones/27/position = Vector3(-0.521208, -0.32869, 26.8313)
+bones/27/rotation = Quaternion(0.274311, -0.0307647, -0.0215721, 0.960907)
+bones/28/position = Vector3(0.639004, 0.857388, 19.9707)
+bones/28/rotation = Quaternion(0.195787, 0.239223, -0.0991179, 0.945841)
+bones/29/position = Vector3(-0.396721, -2.18815, 2.6951)
+bones/29/rotation = Quaternion(0.0588437, -0.427141, 0.890965, 0.142373)
+bones/30/position = Vector3(0.244889, -0.0718498, 3.28013)
+bones/30/scale = Vector3(0.999999, 0.999995, 1)
+bones/31/position = Vector3(-1.7085, 2.00956, 6.62996)
+bones/31/rotation = Quaternion(-0.114239, 0.0567603, -0.054061, 0.990356)
+bones/31/scale = Vector3(1, 0.999999, 1)
+bones/32/position = Vector3(-0.0887823, -0.0212288, 4.34725)
+bones/32/rotation = Quaternion(-2.39667e-07, 0.101924, 1.84619e-06, 0.994792)
+bones/33/position = Vector3(1.00483, 0.774023, 7.55607)
+bones/33/rotation = Quaternion(0.0558628, -0.581747, 0.753197, 0.301902)
+bones/33/scale = Vector3(0.000999987, 0.000999987, 0.000999987)
+bones/34/position = Vector3(1.14039, 0.137562, 8.31396)
+bones/34/scale = Vector3(0.000999987, 0.000999987, 0.000999987)
+bones/35/position = Vector3(-1.90735e-06, -1.83409, -15.701)
+bones/35/scale = Vector3(0.000999987, 0.000999987, 0.000999987)
+bones/36/position = Vector3(-9.00169, -1.45482, 0.49884)
+bones/36/rotation = Quaternion(-0.090783, 0.787836, -0.590843, -0.148246)
+bones/37/position = Vector3(0.0395703, -4.30844, 33.4863)
+bones/37/rotation = Quaternion(-0.0387477, 0.219743, 0.974529, 0.0224773)
+bones/37/scale = Vector3(1, 1, 0.999997)
+bones/38/position = Vector3(0.478206, -0.676559, 25.1325)
+bones/38/rotation = Quaternion(-0.302449, 0.0250547, 0.153657, 0.940365)
+bones/38/scale = Vector3(0.999999, 1, 1)
+bones/39/position = Vector3(-0.477211, -0.109543, 8.55103)
+bones/39/rotation = Quaternion(-0.688848, -0.0330573, -0.00104436, 0.724151)
+bones/40/position = Vector3(9.00169, -1.45477, 0.498875)
+bones/40/rotation = Quaternion(-0.0963252, 0.407195, -0.908143, -0.0138226)
+bones/41/position = Vector3(-0.0395699, -4.30843, 33.4863)
+bones/41/rotation = Quaternion(0.036673, 0.161491, 0.982613, -0.083947)
+bones/42/position = Vector3(-0.478198, -0.676594, 25.1325)
+bones/42/rotation = Quaternion(-0.542723, 0.0655509, -0.0871628, 0.832801)
+bones/43/position = Vector3(0.477196, -0.109547, 8.551)
+bones/43/rotation = Quaternion(-0.344781, 0.02915, -0.0175634, 0.938066)
+bones/43/scale = Vector3(1, 0.999999, 1)
+
+[node name="Object_7" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4/Skeleton3D" index="0"]
+visible = false
+
+[node name="Object_9" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4/Skeleton3D" index="1"]
+visible = false
+
+[node name="Object_13" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4/Skeleton3D" index="3"]
+visible = false
+
+[node name="Object_15" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4/Skeleton3D" index="4"]
+visible = false
+
+[node name="Object_21" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4/Skeleton3D" index="7"]
+visible = false
+
+[node name="Object_6" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4" index="1"]
+visible = false
+
+[node name="Object_8" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4" index="2"]
+visible = false
+
+[node name="Object_10" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4" index="3"]
+visible = false
+
+[node name="Object_12" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4" index="4"]
+visible = false
+
+[node name="Object_14" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4" index="5"]
+visible = false
+
+[node name="Object_16" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4" index="6"]
+visible = false
+
+[node name="Object_18" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4" index="7"]
+visible = false
+
+[node name="Object_20" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4" index="8"]
+visible = false
+
+[node name="arrow" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4" index="9"]
+visible = false
+
+[node name="bow" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4" index="10"]
+visible = false
+
+[node name="character" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4" index="11"]
+visible = false
+
+[node name="long_sword" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4" index="12"]
+visible = false
+
+[node name="quiver" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4" index="13"]
+visible = false
+
+[node name="shield" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4" index="14"]
+visible = false
+
+[node name="small_sword" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4" index="15"]
+visible = false
+
+[node name="stick" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4" index="16"]
+visible = false
+
+[node name="Plane" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4" index="17"]
+visible = false
+
+[node name="Plane_fond_MAT_0" parent="Sketchfab_model/fdb48d135b244610a27abd1f3b5b6feafbx/Object_2/RootNode/Object_4/Plane" index="0"]
+visible = false

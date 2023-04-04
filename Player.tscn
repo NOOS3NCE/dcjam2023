@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://iqea2mwvwhxm"]
+
+[ext_resource type="Script" path="res://Player.cs" id="2_ng5ge"]
+[ext_resource type="PackedScene" uid="uid://bm22el8s1asi3" path="res://PlayerModel.tscn" id="2_u3fpp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qc5mv"]
+radius = 0.2
+height = 1.0
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("2_ng5ge")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.532747, 0)
+shape = SubResource("CapsuleShape3D_qc5mv")
+
+[node name="PlayerModel" parent="." instance=ExtResource("2_u3fpp")]

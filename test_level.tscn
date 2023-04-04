@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bko0whn2nhrl3"]
+
+[ext_resource type="PackedScene" uid="uid://iqea2mwvwhxm" path="res://Player.tscn" id="1_r2qkp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l2kao"]
+size = Vector3(10, 0, 10)
+
+[node name="test_level" type="Node3D"]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="FloorCollison" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_l2kao")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.201591, 0.97947, 0, -0.97947, 0.201591, 0, 7.00384, 0)
+
+[node name="Player" parent="." instance=ExtResource("1_r2qkp")]
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40144, 2.0185)
