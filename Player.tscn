@@ -35,5 +35,6 @@ shape = SubResource("BoxShape3D_sa6lp")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.236256, 0.935244, 0.261194)
 flip_h = true
+shaded = true
 texture_filter = 0
 texture = ExtResource("2_4s8wh")
