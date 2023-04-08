@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bko0whn2nhrl3"]
+[gd_scene load_steps=10 format=3 uid="uid://bko0whn2nhrl3"]
 
 [ext_resource type="PackedScene" uid="uid://byqmsnuq6pgr6" path="res://main_corner.tscn" id="2_46nww"]
 [ext_resource type="PackedScene" uid="uid://xguk8t61ya65" path="res://main_hallway.tscn" id="3_gq42e"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dfsou7e4wmlad" path="res://main_wall.tscn" id="4_dq75j"]
 [ext_resource type="PackedScene" uid="uid://o3givm42ksh7" path="res://door.tscn" id="5_xm6jy"]
 [ext_resource type="PackedScene" uid="uid://dwyue48jgisls" path="res://sconce.tscn" id="6_xswpi"]
+[ext_resource type="AudioStream" uid="uid://ctcj88km0eqhq" path="res://Level Pieces/1.mp3" id="7_d4ec8"]
+[ext_resource type="PackedScene" uid="uid://djirrvupriepi" path="res://chest.tscn" id="8_2up15"]
 
 [sub_resource type="Environment" id="Environment_8tnmv"]
 tonemap_mode = 2
@@ -30,17 +32,10 @@ fog_height_density = 16.0
 adjustment_brightness = 2.5
 adjustment_saturation = 0.01
 
-[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_g2ypr"]
-frustum_focus_distance = 1.5
-frustum_focal_length = 85.0
-frustum_near = 0.008
-frustum_far = 3930.6
-
 [node name="test_level" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8tnmv")
-camera_attributes = SubResource("CameraAttributesPhysical_g2ypr")
 
 [node name="MainWall" parent="." instance=ExtResource("4_dq75j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
@@ -80,9 +75,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0,
 
 [node name="MainHallway3" parent="." instance=ExtResource("3_gq42e")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 10)
-
-[node name="MainHallway4" parent="." instance=ExtResource("3_gq42e")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, 10)
 
 [node name="MainHallway5" parent="." instance=ExtResource("3_gq42e")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6, 0, 10)
@@ -143,9 +135,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0,
 
 [node name="MainWall9" parent="." instance=ExtResource("4_dq75j")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10, 0, -2)
-
-[node name="MainWall10" parent="." instance=ExtResource("4_dq75j")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -2, 0, 10)
 
 [node name="MainCorner3" parent="." instance=ExtResource("2_46nww")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10, 0, -10)
@@ -213,25 +202,55 @@ light_volumetric_fog_energy = 4.245
 light_specular = 0.0
 
 [node name="Sconce" parent="." instance=ExtResource("6_xswpi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83192, 0.853018, 2.00209)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83192, 1.17117, 2.00209)
 
 [node name="Sconce2" parent="." instance=ExtResource("6_xswpi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83192, 0.853018, 0.00209165)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83192, 1.17117, 0.00209165)
 
 [node name="Sconce3" parent="." instance=ExtResource("6_xswpi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83192, 0.853018, -1.99791)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83192, 1.17117, -1.99791)
 
 [node name="Sconce4" parent="." instance=ExtResource("6_xswpi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83192, 0.853018, -3.99791)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83192, 1.18591, -3.99791)
 
 [node name="Sconce5" parent="." instance=ExtResource("6_xswpi")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.785198, 0.853018, -3.99791)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.785198, 1.17798, -3.99791)
+
+[node name="Sconce11" parent="." instance=ExtResource("6_xswpi")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.785198, 1.17798, -9.99791)
+
+[node name="Sconce12" parent="." instance=ExtResource("6_xswpi")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -4.2148, 1.17798, -10.8294)
+
+[node name="Sconce13" parent="." instance=ExtResource("6_xswpi")]
+transform = Transform3D(0.894404, 0, 0.44726, 0, 1, 0, -0.44726, 0, 0.894404, -7.4181, 1.17798, -9.02677)
+
+[node name="Sconce9" parent="." instance=ExtResource("6_xswpi")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.2148, 1.2429, -5.99791)
+
+[node name="Sconce10" parent="." instance=ExtResource("6_xswpi")]
+transform = Transform3D(0.947289, 0, 0.320382, 0, 1, 0, -0.320382, 0, 0.947289, -4.8576, 1.2429, -5.99791)
 
 [node name="Sconce6" parent="." instance=ExtResource("6_xswpi")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.785198, 0.853018, -1.99791)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.785198, 1.17798, -1.99791)
 
 [node name="Sconce7" parent="." instance=ExtResource("6_xswpi")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.785199, 0.853018, 0.00209165)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.785199, 1.17798, 0.00209165)
 
 [node name="Sconce8" parent="." instance=ExtResource("6_xswpi")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.785199, 0.853018, 2.00209)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.785199, 1.28701, 2.00209)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_d4ec8")
+
+[node name="MainCorner11" parent="." instance=ExtResource("2_46nww")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, 10)
+
+[node name="MainCorner12" parent="." instance=ExtResource("2_46nww")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, 10)
+
+[node name="MainWall10" parent="." instance=ExtResource("4_dq75j")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, 12)
+
+[node name="Chest" parent="." instance=ExtResource("8_2up15")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2, 0, -6)

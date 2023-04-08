@@ -7,16 +7,46 @@ public partial class baddie : Node3D
 	public Sprite3D sprite3D;
 	public Area3D baddieBox;
 	public Tween tween;
-	public Node3D player;
+	public Player player;
 	public Node3D level;
 	public WorldEnvironment worldEnv;
-	// Called when the node enters the scene tree for the first time.
+	private bool isAttacking = false;
+	public int health = 4;
+	Timer timer; 
+
 	public override void _Ready()
 	{
 		sprite3D = GetNode<Sprite3D>("Sprite3D");
-		// sprite3D.GetNode<GeometryInstance3D>("GeometryInstance3D").Transparency = 1.0f;
 		sprite3D.Transparency = 1.0f;
-		
+		timer = GetNode<Timer>("Timer");
+		timer.OneShot = true;
+	}
+	public void _TakeDamage()
+	{
+		health -= 1;
+		if (health <= 0)
+		{
+			QueueFree();
+		}
+	}
+	private void _OnTimerEnd()
+	{
+		Player player = GetNode<Player>("/root/Game/Player");
+		var random = new Random();
+		var value = random.NextDouble(); 
+		if (value > .7)
+		{
+			GD.Print("HIT::::::::::::::", value);
+			player._TakeDamage();
+		}
+		isAttacking = false;
+	}
+
+	private void _StartAttack()
+	{
+		timer.Timeout += _OnTimerEnd;
+		timer.Start(1.0f);
+		tween.TweenProperty(sprite3D, "transparency", 0.0f, 0.8f);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,25 +54,15 @@ public partial class baddie : Node3D
 	{
 		level = GetNode("/root/Game").GetNode<Node3D>("test_level");
 		worldEnv = level.GetNode<WorldEnvironment>("WorldEnvironment");
-		player = GetNode("/root/Game").GetNode<Node3D>("Player");
+		player = GetNode<Player>("/root/Game/Player");
 		Area3D playerBox = player.GetNode<Area3D>("Area3D - Player");
 		tween = CreateTween();
-		// Environment bleak = new Environment();
-		// bleak.AdjustmentEnabled = true;
-		// bleak.AdjustmentSaturation = 0.0f;
-		// bleak.AdjustmentBrightness = 2.5f;
 
 		baddieBox = GetNode<Area3D>("Area3D - Baddie");
-		if (baddieBox.OverlapsArea(playerBox))
+		if (baddieBox.OverlapsArea(playerBox) && !isAttacking && timer.IsStopped())
 		{
-			tween.TweenProperty(sprite3D, "transparency", 0.0f, 0.8f);
-			 for (int i = 0; i < 3; i++)
-			 {
-				// GD.Print("GOTEM", worldEnv.Environment.AdjustmentEnabled);
-				// worldEnv.Environment = bleak;	
-				DelayMethod();
-				// worldEnv.Environment.AdjustmentEnabled = false;	
-			 }
+			isAttacking = true;
+			_StartAttack();
 		}
 	}
 

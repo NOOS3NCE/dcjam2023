@@ -16,6 +16,7 @@ billboard_keep_scale = true
 size = Vector3(2, 0.5, 2)
 
 [node name="Baddie" type="Node3D"]
+transform = Transform3D(1.00386, 0, 0, 0, 1.00386, 0, 0, 0, 1.00386, 0, 0, 0)
 script = ExtResource("1_arpee")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
