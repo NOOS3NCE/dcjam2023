@@ -1,0 +1,128 @@
+[gd_scene load_steps=17 format=3 uid="uid://dwyue48jgisls"]
+
+[ext_resource type="Texture2D" uid="uid://o1i4kdk61ejp" path="res://Level Pieces/Sconce.png" id="1_431xi"]
+[ext_resource type="Script" path="res://SpotLight3D.cs" id="2_1udne"]
+[ext_resource type="Texture2D" uid="uid://cegclqmrw2y52" path="res://Level Pieces/Sconce-sheet.png" id="2_5mxop"]
+[ext_resource type="Script" path="res://AnimatedSprite3D.cs" id="4_x70cx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8p1a"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("1_431xi")
+texture_filter = 0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_vx6y1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkb5b"]
+atlas = ExtResource("2_5mxop")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rx68o"]
+atlas = ExtResource("2_5mxop")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m51pq"]
+atlas = ExtResource("2_5mxop")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysvro"]
+atlas = ExtResource("2_5mxop")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gbil"]
+atlas = ExtResource("2_5mxop")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqebe"]
+atlas = ExtResource("2_5mxop")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4apx"]
+atlas = ExtResource("2_5mxop")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8mcf"]
+atlas = ExtResource("2_5mxop")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2m63"]
+atlas = ExtResource("2_5mxop")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5qna3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkb5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rx68o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m51pq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysvro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gbil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqebe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4apx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8mcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2m63")
+}],
+"loop": true,
+"name": &"flame",
+"speed": 4.0
+}]
+
+[node name="Sconce" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.000554822, 0.192446, -0.00505826)
+material_override = SubResource("StandardMaterial3D_f8p1a")
+pixel_size = 0.6
+texture = SubResource("CanvasTexture_vx6y1")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.000554822, 0.192446, -0.00505826)
+material_override = SubResource("StandardMaterial3D_f8p1a")
+pixel_size = 0.6
+texture = SubResource("CanvasTexture_vx6y1")
+
+[node name="mount" type="Sprite3D" parent="."]
+transform = Transform3D(4.37114e-08, -1, 8.74228e-08, -1, -4.37114e-08, 0, 3.82137e-15, -8.74228e-08, -1, -0.223411, 0.192446, -0.00505826)
+material_override = SubResource("StandardMaterial3D_f8p1a")
+pixel_size = 0.6
+texture = SubResource("CanvasTexture_vx6y1")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.338543, 0)
+light_color = Color(1, 0.403922, 0.223529, 1)
+light_energy = 2.0
+spot_range = 7.513
+spot_angle = 73.95
+script = ExtResource("2_1udne")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.41876, 0)
+billboard = 1
+texture_filter = 0
+render_priority = -1
+sprite_frames = SubResource("SpriteFrames_5qna3")
+animation = &"flame"
+frame_progress = 0.399394
+speed_scale = 3.0
+script = ExtResource("4_x70cx")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.379521, 0)
+light_color = Color(1, 0.403922, 0.223529, 1)

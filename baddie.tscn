@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0fb6visif1iy"]
+
+[ext_resource type="Script" path="res://baddie.cs" id="1_arpee"]
+[ext_resource type="Texture2D" uid="uid://c8opu7kmkgon0" path="res://Enemies/New_Piskel-1.png.png" id="2_3h8iq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f2vnj"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 2
+albedo_texture = ExtResource("2_3h8iq")
+texture_filter = 0
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7nvdg"]
+size = Vector3(2, 0.5, 2)
+
+[node name="Baddie" type="Node3D"]
+script = ExtResource("1_arpee")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.00290191, 0.636675, -0.000976443)
+material_override = SubResource("StandardMaterial3D_f2vnj")
+texture = ExtResource("2_3h8iq")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 48)
+
+[node name="Area3D - Baddie" type="Area3D" parent="."]
+transform = Transform3D(1.01267, 0, 0, 0, 1.01267, 0, 0, 0, 1.01267, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D - Baddie"]
+transform = Transform3D(1.00779, 0, 0, 0, 1.00779, 0, 0, 0, 1.00779, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_7nvdg")
+
+[node name="Timer" type="Timer" parent="."]

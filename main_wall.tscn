@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfsou7e4wmlad"]
+
+[ext_resource type="PackedScene" uid="uid://cp7w1138kwilr" path="res://Level Pieces/MainWall.glb" id="1_j3nax"]
+[ext_resource type="Material" uid="uid://dmmakly0xhsji" path="res://floor.tres" id="2_t11fm"]
+[ext_resource type="Material" uid="uid://b6kcf3chgv8m5" path="res://mainwall.tres" id="3_i3h2y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kckkx"]
+size = Vector3(1, 4, 4)
+
+[node name="MainWall" instance=ExtResource("1_j3nax")]
+
+[node name="Cube001" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_t11fm")
+surface_material_override/1 = ExtResource("3_i3h2y")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+disable_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.746371, 1, 0)
+shape = SubResource("BoxShape3D_kckkx")

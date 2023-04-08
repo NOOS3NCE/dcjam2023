@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://xguk8t61ya65"]
+
+[ext_resource type="PackedScene" uid="uid://2v8tvwtrehwx" path="res://Level Pieces/MainHallway.glb" id="1_kd07w"]
+[ext_resource type="Material" uid="uid://dmmakly0xhsji" path="res://floor.tres" id="2_y22v6"]
+[ext_resource type="Material" uid="uid://b6kcf3chgv8m5" path="res://mainwall.tres" id="3_ol3ph"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mmc8i"]
+size = Vector3(4, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tfth8"]
+size = Vector3(4, 4, 1)
+
+[node name="MainHallway" instance=ExtResource("1_kd07w")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_y22v6")
+surface_material_override/1 = ExtResource("3_ol3ph")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.00185418, 1, -0.743591)
+shape = SubResource("BoxShape3D_mmc8i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, 0.748223)
+shape = SubResource("BoxShape3D_tfth8")

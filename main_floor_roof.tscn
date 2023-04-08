@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://lr2ii2bprjqs"]
+
+[ext_resource type="PackedScene" uid="uid://ds53fnbcwr4ne" path="res://Level Pieces/MainFloor_Roof.glb" id="1_d5in5"]
+[ext_resource type="Material" uid="uid://dmmakly0xhsji" path="res://floor.tres" id="2_v4a7v"]
+
+[node name="MainFloor_Roof" instance=ExtResource("1_d5in5")]
+
+[node name="Cube003" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_v4a7v")
