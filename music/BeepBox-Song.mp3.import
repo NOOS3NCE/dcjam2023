@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/BeepBox-Song.mp3-fee5dd7255fa251f65c550736e6f
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
