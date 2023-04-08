@@ -27,7 +27,7 @@ public partial class Player : Node3D
 		var rayCast3D = GetNode<RayCast3D>("RayCast3D");
 		Vector3 moveDirection = Vector3.Zero;
 		// GD.Print(detectBox.GetOverlappingAreas());
-		if (Input.IsActionJustPressed("ui_up") && !pauseKeyPresses)
+		if (Input.IsActionPressed("ui_up") && !pauseKeyPresses)
 		{
 			if (pauseKeyPresses != true){
 				timer.Timeout += _OnTimerEnd;
@@ -44,7 +44,7 @@ public partial class Player : Node3D
 				tween.TweenProperty(this, "global_transform", new Transform3D(GlobalTransform.Basis, GlobalTransform.Origin + moveDirection), 0.2f);
 			}
 		}
-		else if (Input.IsActionJustPressed("ui_down") && !pauseKeyPresses)
+		else if (Input.IsActionPressed("ui_down") && !pauseKeyPresses)
 		{
 			if (pauseKeyPresses != true){
 				timer.Timeout += _OnTimerEnd;
@@ -60,7 +60,7 @@ public partial class Player : Node3D
 				tween.TweenProperty(this, "global_transform", new Transform3D(GlobalTransform.Basis, GlobalTransform.Origin + moveDirection), 0.2f);
 			}
 		}
-		else if (Input.IsActionJustPressed("ui_left") && !pauseKeyPresses)
+		else if (Input.IsActionPressed("ui_left") && !pauseKeyPresses)
 		{
 			if (pauseKeyPresses != true){
 				timer.Timeout += _OnTimerEnd;
@@ -76,7 +76,7 @@ public partial class Player : Node3D
 				tween.TweenProperty(this, "global_transform", new Transform3D(GlobalTransform.Basis, GlobalTransform.Origin + moveDirection), 0.2f);
 			}
 		}
-		else if (Input.IsActionJustPressed("ui_right") && !pauseKeyPresses)
+		else if (Input.IsActionPressed("ui_right") && !pauseKeyPresses)
 		{
 			if (pauseKeyPresses != true){
 				timer.Timeout += _OnTimerEnd;
@@ -92,7 +92,7 @@ public partial class Player : Node3D
 				tween.TweenProperty(this, "global_transform", new Transform3D(GlobalTransform.Basis, GlobalTransform.Origin + moveDirection), 0.2f);
 			}
 		}
-		else if (Input.IsActionJustPressed("ui_turn_r") && !pauseKeyPresses)
+		else if (Input.IsActionPressed("ui_turn_r") && !pauseKeyPresses)
 		{
 			if (pauseKeyPresses != true){
 				timer.Timeout += _OnTimerEnd;
@@ -101,7 +101,7 @@ public partial class Player : Node3D
 			pauseKeyPresses = true;
 			tween.TweenProperty(this, "rotation_degrees", RotationDegrees + new Vector3(0.0f, -90.0f, 0.0f), 0.2f);
 		}
-		else if (Input.IsActionJustPressed("ui_turn_l") && !pauseKeyPresses)
+		else if (Input.IsActionPressed("ui_turn_l") && !pauseKeyPresses)
 		{
 			if (pauseKeyPresses != true){
 				timer.Timeout += _OnTimerEnd;
