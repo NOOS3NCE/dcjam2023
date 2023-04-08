@@ -1,44 +1,129 @@
 using Godot;
 using System;
 
-public partial class Player : CharacterBody3D
+public partial class Player : Node3D
 {
-	public const float Speed = 5.0f;
-	public const float JumpVelocity = 4.5f;
+	public static int health = 100;
 
-
-	// Get the gravity from the project settings to be synced with RigidBody nodes.
-	public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
-
-	public override void _PhysicsProcess(double delta)
+	private Vector3 forward = new Vector3(0,0,2);
+	private Vector3 backward = new Vector3(0,0,-2);
+	private Vector3 left = new Vector3(2,0,0);
+	private Vector3 right = new Vector3(-2,0,0);
+	public float moveDistance = 2.0f;
+	public bool pauseKeyPresses = false;
+	private Area3D detectBox;
+	
+	private Transform3D forwardTransform = new Transform3D();
+	private void _OnTimerEnd()
 	{
-		Vector3 velocity = Velocity;
+		pauseKeyPresses = false;
+	}
 
-		// Add the gravity.
-		if (!IsOnFloor())
-			velocity.Y -= gravity * (float)delta;
-
-		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-			velocity.Y = JumpVelocity;
-
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
-		if (direction != Vector3.Zero)
+	public override void _Process(double delta)
+	{ 
+		detectBox = GetNode<Area3D>("Area3D - Player");
+		var timer = GetNode<Timer>("Timer");
+		Tween tween = CreateTween();
+		var rayCast3D = GetNode<RayCast3D>("RayCast3D");
+		Vector3 moveDirection = Vector3.Zero;
+		// GD.Print(detectBox.GetOverlappingAreas());
+		if (Input.IsActionJustPressed("ui_up") && !pauseKeyPresses)
 		{
-			velocity.X = direction.X * Speed;
-			velocity.Z = direction.Z * Speed;
-			GetNode<AnimationPlayer>("PlayerModel/AnimationPlayer").Play("walk");
-		}
-		else
-		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
-		}
+			if (pauseKeyPresses != true){
+				timer.Timeout += _OnTimerEnd;
+				timer.Start(0.2f);
+			}
+			pauseKeyPresses = true;
+			rayCast3D.TargetPosition = new Vector3(0, 0, 1);
+			rayCast3D.ForceRaycastUpdate();
 
-		Velocity = velocity;
-		MoveAndSlide();
+			if (!rayCast3D.IsColliding())
+			{	
+				moveDirection += Transform.Basis.Z;
+				moveDirection = moveDirection * moveDistance;
+				tween.TweenProperty(this, "global_transform", new Transform3D(GlobalTransform.Basis, GlobalTransform.Origin + moveDirection), 0.2f);
+			}
+		}
+		else if (Input.IsActionJustPressed("ui_down") && !pauseKeyPresses)
+		{
+			if (pauseKeyPresses != true){
+				timer.Timeout += _OnTimerEnd;
+				timer.Start(0.2f);
+			}
+			pauseKeyPresses = true;
+			rayCast3D.TargetPosition = new Vector3(0, 0, -1);
+			rayCast3D.ForceRaycastUpdate();
+			if (!rayCast3D.IsColliding())
+			{
+				moveDirection -= Transform.Basis.Z;
+				moveDirection *= moveDistance;
+				tween.TweenProperty(this, "global_transform", new Transform3D(GlobalTransform.Basis, GlobalTransform.Origin + moveDirection), 0.2f);
+			}
+		}
+		else if (Input.IsActionJustPressed("ui_left") && !pauseKeyPresses)
+		{
+			if (pauseKeyPresses != true){
+				timer.Timeout += _OnTimerEnd;
+				timer.Start(0.2f);
+			}
+			pauseKeyPresses = true;
+			rayCast3D.TargetPosition = new Vector3(1, 0, 0);
+			rayCast3D.ForceRaycastUpdate();
+			if (!rayCast3D.IsColliding())	
+			{
+				moveDirection += Transform.Basis.X;
+				moveDirection *= moveDistance;
+				tween.TweenProperty(this, "global_transform", new Transform3D(GlobalTransform.Basis, GlobalTransform.Origin + moveDirection), 0.2f);
+			}
+		}
+		else if (Input.IsActionJustPressed("ui_right") && !pauseKeyPresses)
+		{
+			if (pauseKeyPresses != true){
+				timer.Timeout += _OnTimerEnd;
+				timer.Start(0.2f);
+			}
+			pauseKeyPresses = true;
+			rayCast3D.TargetPosition = new Vector3(-1, 0, 0);
+			rayCast3D.ForceRaycastUpdate();
+			if (!rayCast3D.IsColliding())	
+			{
+				moveDirection -= Transform.Basis.X;
+				moveDirection *= moveDistance;
+				tween.TweenProperty(this, "global_transform", new Transform3D(GlobalTransform.Basis, GlobalTransform.Origin + moveDirection), 0.2f);
+			}
+		}
+		else if (Input.IsActionJustPressed("ui_turn_r") && !pauseKeyPresses)
+		{
+			if (pauseKeyPresses != true){
+				timer.Timeout += _OnTimerEnd;
+				timer.Start(0.2f);
+			}
+			pauseKeyPresses = true;
+			tween.TweenProperty(this, "rotation_degrees", RotationDegrees + new Vector3(0.0f, -90.0f, 0.0f), 0.2f);
+		}
+		else if (Input.IsActionJustPressed("ui_turn_l") && !pauseKeyPresses)
+		{
+			if (pauseKeyPresses != true){
+				timer.Timeout += _OnTimerEnd;
+				timer.Start(0.2f);
+			}
+			pauseKeyPresses = true;
+			tween.TweenProperty(this, "rotation_degrees", RotationDegrees + new Vector3(0.0f, 90.0f, 0.0f), 0.2f);
+		}
+	}
+
+	public static void _TakeDamage(int damage)
+	{
+		health -= damage;
+		GD.Print("HEALTH: ", health);
+		if (health <= 0)
+		{
+			_PlayerDead();
+		}
+	}
+
+	public static void _PlayerDead()
+	{
+		GD.Print("You Died");	
 	}
 }

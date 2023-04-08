@@ -1,17 +1,39 @@
 [gd_scene load_steps=4 format=3 uid="uid://iqea2mwvwhxm"]
 
+[ext_resource type="Texture2D" uid="uid://dm6ee50rgnshd" path="res://GiveMeAHand.png" id="2_4s8wh"]
 [ext_resource type="Script" path="res://Player.cs" id="2_ng5ge"]
-[ext_resource type="PackedScene" uid="uid://bm22el8s1asi3" path="res://PlayerModel.tscn" id="2_u3fpp"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qc5mv"]
-radius = 0.2
-height = 1.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_sa6lp"]
+size = Vector3(1, 0.5, 2)
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Node3D" type="Node3D"]
 script = ExtResource("2_ng5ge")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.532747, 0)
-shape = SubResource("CapsuleShape3D_qc5mv")
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
 
-[node name="PlayerModel" parent="." instance=ExtResource("2_u3fpp")]
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 4.44089e-16, 0, -4.44089e-16, 1, 0, 0, 0, 1, 0, 1, 0)
+target_position = Vector3(0, 0, 1)
+collide_with_areas = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, -1.65236e-09, -8.74071e-08, -2.56605e-09, 0.999945, 0.0104543, 8.73851e-08, 0.0104543, -0.999945, 0.00385306, 1.04835, -0.512904)
+fov = 60.0
+
+[node name="BallofSight@OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0132122, 1.02951, 0.133176)
+light_color = Color(1, 0.705882, 0.572549, 1)
+light_energy = 0.5
+
+[node name="Area3D - Player" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D - Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 1)
+shape = SubResource("BoxShape3D_sa6lp")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.236256, 0.935244, 0.261194)
+flip_h = true
+texture_filter = 0
+texture = ExtResource("2_4s8wh")
