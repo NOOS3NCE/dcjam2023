@@ -15,7 +15,6 @@ public partial class SpotLight3D : Godot.SpotLight3D
 	public override void _Process(double delta)
 	{
 		timePassed += (float)delta;
-		GD.Print(timePassed);
 		if ((int)timePassed % 2 == 1)
 		{
 			DelayMethod();

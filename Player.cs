@@ -1,9 +1,10 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public partial class Player : Node3D
 {
-	public static int health = 100;
+	public int health = 8;
 
 	private Vector3 forward = new Vector3(0,0,2);
 	private Vector3 backward = new Vector3(0,0,-2);
@@ -11,22 +12,26 @@ public partial class Player : Node3D
 	private Vector3 right = new Vector3(-2,0,0);
 	public float moveDistance = 2.0f;
 	public bool pauseKeyPresses = false;
-	private Area3D detectBox;
-	
 	private Transform3D forwardTransform = new Transform3D();
+	public bool hasKey = false;
+	public bool hasUnlockedDoor = false;
+
 	private void _OnTimerEnd()
 	{
 		pauseKeyPresses = false;
 	}
 
+	public override void _Ready()
+	{
+		GetNode<AnimatedSprite3D>("HealthBar").Frame = 8;	
+	}
+
 	public override void _Process(double delta)
 	{ 
-		detectBox = GetNode<Area3D>("Area3D - Player");
 		var timer = GetNode<Timer>("Timer");
 		Tween tween = CreateTween();
 		var rayCast3D = GetNode<RayCast3D>("RayCast3D");
 		Vector3 moveDirection = Vector3.Zero;
-		// GD.Print(detectBox.GetOverlappingAreas());
 		if (Input.IsActionPressed("ui_up") && !pauseKeyPresses)
 		{
 			if (pauseKeyPresses != true){
@@ -110,20 +115,68 @@ public partial class Player : Node3D
 			pauseKeyPresses = true;
 			tween.TweenProperty(this, "rotation_degrees", RotationDegrees + new Vector3(0.0f, 90.0f, 0.0f), 0.2f);
 		}
+		else if (Input.IsActionJustPressed("ui_attack") && !pauseKeyPresses)
+		{
+			if (pauseKeyPresses != true){
+				timer.Timeout += _OnTimerEnd;
+				timer.Start(0.2f);
+				_Attack();
+			}
+			pauseKeyPresses = true;
+		}
+		else if (Input.IsActionJustPressed("ui_grab") && !pauseKeyPresses)
+		{
+			if (pauseKeyPresses != true){
+				timer.Timeout += _OnTimerEnd;
+				timer.Start(0.2f);
+				Area3D chestBox = GetNode<Area3D>("/root/Game/test_level/Chest/Area3D - Chest");
+				Area3D playerBox = GetNode<Area3D>("Area3D - Player");
+				Area3D doorBox = GetNode<Area3D>("/root/Game/test_level/Door/Area3D - Door");
+				if(playerBox.OverlapsArea(doorBox) && hasKey)
+					_UnlockDoor();
+				else if (playerBox.OverlapsArea(chestBox))
+					_PickUpKey();
+			}
+			pauseKeyPresses = true;
+		}
 	}
 
-	public static void _TakeDamage(int damage)
+	public void _TakeDamage()
 	{
-		health -= damage;
-		GD.Print("HEALTH: ", health);
+		health -= 1;
+		Godot.AnimatedSprite3D HealthBar = GetNode<Godot.AnimatedSprite3D>("HealthBar");
+		HealthBar.Frame = health;
 		if (health <= 0)
 		{
 			_PlayerDead();
 		}
 	}
 
-	public static void _PlayerDead()
+	public void _Attack()
+	{
+		baddie enemies = GetNode<Area3D>("Area3D - Player").GetOverlappingAreas()[0].GetParent() as baddie;
+		var random = new Random();
+		var value = random.NextDouble(); 
+		if (value > .3)
+		{
+			enemies._TakeDamage();
+		}
+	}
+	
+	public void _PickUpKey()
+	{
+		hasKey = true;	
+	}
+
+	public void _UnlockDoor()
+	{
+		hasUnlockedDoor = true;
+		GetTree().ChangeSceneToFile("res://win_game.tscn");
+	}
+
+	public void _PlayerDead()
 	{
 		GD.Print("You Died");	
+		GetTree().ChangeSceneToFile("res://game_over.tscn");
 	}
 }

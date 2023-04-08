@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://o3givm42ksh7"]
+[gd_scene load_steps=6 format=3 uid="uid://o3givm42ksh7"]
 
 [ext_resource type="PackedScene" uid="uid://by4rloao4qlqt" path="res://Level Pieces/Door.glb" id="1_xlpw6"]
 [ext_resource type="Texture2D" uid="uid://cwsmerrtg5v57" path="res://Level Pieces/Door.png" id="2_yrrt2"]
@@ -11,6 +11,9 @@ texture_filter = 0
 [sub_resource type="BoxShape3D" id="BoxShape3D_l7ksq"]
 size = Vector3(0.388768, 2, 2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_kfw1g"]
+size = Vector3(1.20217, 0.602635, 1.97924)
+
 [node name="Door" instance=ExtResource("1_xlpw6")]
 
 [node name="Cube004" parent="." index="0"]
@@ -22,3 +25,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_wgfit")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube004/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.807934, 1, 0)
 shape = SubResource("BoxShape3D_l7ksq")
+
+[node name="Area3D - Door" type="Area3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D - Door" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.398983, 0.301821, 0)
+shape = SubResource("BoxShape3D_kfw1g")

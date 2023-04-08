@@ -1,10 +1,82 @@
-[gd_scene load_steps=4 format=3 uid="uid://iqea2mwvwhxm"]
+[gd_scene load_steps=15 format=3 uid="uid://iqea2mwvwhxm"]
 
 [ext_resource type="Texture2D" uid="uid://dm6ee50rgnshd" path="res://GiveMeAHand.png" id="2_4s8wh"]
 [ext_resource type="Script" path="res://Player.cs" id="2_ng5ge"]
+[ext_resource type="Texture2D" uid="uid://b0w8t07v7pfx1" path="res://UI - Battle/Health_Bar.png" id="3_q5ksj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sa6lp"]
 size = Vector3(1, 0.5, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnwor"]
+atlas = ExtResource("3_q5ksj")
+region = Rect2(1024, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wagcb"]
+atlas = ExtResource("3_q5ksj")
+region = Rect2(896, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srqh7"]
+atlas = ExtResource("3_q5ksj")
+region = Rect2(768, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbch1"]
+atlas = ExtResource("3_q5ksj")
+region = Rect2(640, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vujrc"]
+atlas = ExtResource("3_q5ksj")
+region = Rect2(512, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otfr3"]
+atlas = ExtResource("3_q5ksj")
+region = Rect2(384, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nw7tp"]
+atlas = ExtResource("3_q5ksj")
+region = Rect2(256, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8smmx"]
+atlas = ExtResource("3_q5ksj")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gll83"]
+atlas = ExtResource("3_q5ksj")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_udav3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnwor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wagcb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srqh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbch1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vujrc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otfr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nw7tp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8smmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gll83")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("2_ng5ge")
@@ -27,6 +99,7 @@ light_color = Color(1, 0.705882, 0.572549, 1)
 light_energy = 0.5
 
 [node name="Area3D - Player" type="Area3D" parent="."]
+transform = Transform3D(0.972694, 0, 0, 0, 0.972694, 0, 0, 0, 0.972694, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D - Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 1)
@@ -38,3 +111,9 @@ flip_h = true
 shaded = true
 texture_filter = 0
 texture = ExtResource("2_4s8wh")
+
+[node name="HealthBar" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(-0.3, 0, -4.52987e-08, 0, 0.3, 0, 4.52987e-08, 0, -0.3, 0.526868, 0.664869, 0.267679)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_udav3")
+frame = 8
