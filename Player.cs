@@ -14,6 +14,7 @@ public partial class Player : Node3D
 	public bool pauseKeyPresses = false;
 	private Transform3D forwardTransform = new Transform3D();
 	public bool hasKey = false;
+	public bool hasUnlockedDoor = false;
 
 	private void _OnTimerEnd()
 	{
@@ -123,18 +124,30 @@ public partial class Player : Node3D
 			}
 			pauseKeyPresses = true;
 		}
+		else if (Input.IsActionJustPressed("ui_grab") && !pauseKeyPresses)
+		{
+			if (pauseKeyPresses != true){
+				timer.Timeout += _OnTimerEnd;
+				timer.Start(0.2f);
+				Area3D chestBox = GetNode<Area3D>("/root/Game/test_level/Chest/Area3D - Chest");
+				Area3D playerBox = GetNode<Area3D>("Area3D - Player");
+				Area3D doorBox = GetNode<Area3D>("/root/Game/test_level/Door/Area3D - Door");
+				if(playerBox.OverlapsArea(doorBox) && hasKey)
+					_UnlockDoor();
+				else if (playerBox.OverlapsArea(chestBox))
+					_PickUpKey();
+			}
+			pauseKeyPresses = true;
+		}
 	}
 
 	public void _TakeDamage()
 	{
 		health -= 1;
-		GD.Print("HEALTH: ", health);
 		Godot.AnimatedSprite3D HealthBar = GetNode<Godot.AnimatedSprite3D>("HealthBar");
 		HealthBar.Frame = health;
-		GD.Print("FRAME: ", HealthBar.Frame);
 		if (health <= 0)
 		{
-			GD.Print("SHOULD BE DEAD");
 			_PlayerDead();
 		}
 	}
@@ -142,8 +155,12 @@ public partial class Player : Node3D
 	public void _Attack()
 	{
 		baddie enemies = GetNode<Area3D>("Area3D - Player").GetOverlappingAreas()[0].GetParent() as baddie;
-		enemies._TakeDamage();
-		GD.Print("BaddieBox:::: ", enemies);
+		var random = new Random();
+		var value = random.NextDouble(); 
+		if (value > .3)
+		{
+			enemies._TakeDamage();
+		}
 	}
 	
 	public void _PickUpKey()
@@ -151,8 +168,15 @@ public partial class Player : Node3D
 		hasKey = true;	
 	}
 
+	public void _UnlockDoor()
+	{
+		hasUnlockedDoor = true;
+		GetTree().ChangeSceneToFile("res://win_game.tscn");
+	}
+
 	public void _PlayerDead()
 	{
 		GD.Print("You Died");	
+		GetTree().ChangeSceneToFile("res://game_over.tscn");
 	}
 }
