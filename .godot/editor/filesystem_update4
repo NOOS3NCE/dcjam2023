@@ -1,0 +1,15 @@
+res://sconce.tscn
+res://floor.tres
+res://leftsidewall.tres
+res://rightwall.tres
+res://mainwall.tres
+res://Player.cs
+res://game.tscn
+res://baddie.tscn
+res://main_corner.tscn
+res://main_hallway.tscn
+res://main_wall.tscn
+res://Player.tscn
+res://test_level.tscn
+res://main_floor_roof.tscn
+res://door.tscn

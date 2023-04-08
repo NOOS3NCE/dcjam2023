@@ -1,0 +1,17 @@
+C:\Users\Noose\Projects\DungeonCrawlerJam2023\.godot\mono\temp\bin\Debug\Dungeon Crawler Jam 2023.deps.json
+C:\Users\Noose\Projects\DungeonCrawlerJam2023\.godot\mono\temp\bin\Debug\Dungeon Crawler Jam 2023.runtimeconfig.json
+C:\Users\Noose\Projects\DungeonCrawlerJam2023\.godot\mono\temp\bin\Debug\Dungeon Crawler Jam 2023.dll
+C:\Users\Noose\Projects\DungeonCrawlerJam2023\.godot\mono\temp\bin\Debug\Dungeon Crawler Jam 2023.pdb
+C:\Users\Noose\Projects\DungeonCrawlerJam2023\.godot\mono\temp\bin\Debug\GodotSharp.dll
+C:\Users\Noose\Projects\DungeonCrawlerJam2023\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+C:\Users\Noose\Projects\DungeonCrawlerJam2023\.godot\mono\temp\obj\Debug\Dungeon Crawler Jam 2023.csproj.AssemblyReference.cache
+C:\Users\Noose\Projects\DungeonCrawlerJam2023\.godot\mono\temp\obj\Debug\Dungeon Crawler Jam 2023.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Noose\Projects\DungeonCrawlerJam2023\.godot\mono\temp\obj\Debug\Dungeon Crawler Jam 2023.AssemblyInfoInputs.cache
+C:\Users\Noose\Projects\DungeonCrawlerJam2023\.godot\mono\temp\obj\Debug\Dungeon Crawler Jam 2023.AssemblyInfo.cs
+C:\Users\Noose\Projects\DungeonCrawlerJam2023\.godot\mono\temp\obj\Debug\Dungeon Crawler Jam 2023.csproj.CoreCompileInputs.cache
+C:\Users\Noose\Projects\DungeonCrawlerJam2023\.godot\mono\temp\obj\Debug\Dungeon Crawler Jam 2023.csproj.CopyComplete
+C:\Users\Noose\Projects\DungeonCrawlerJam2023\.godot\mono\temp\obj\Debug\Dungeon Crawler Jam 2023.dll
+C:\Users\Noose\Projects\DungeonCrawlerJam2023\.godot\mono\temp\obj\Debug\refint\Dungeon Crawler Jam 2023.dll
+C:\Users\Noose\Projects\DungeonCrawlerJam2023\.godot\mono\temp\obj\Debug\Dungeon Crawler Jam 2023.pdb
+C:\Users\Noose\Projects\DungeonCrawlerJam2023\.godot\mono\temp\obj\Debug\Dungeon Crawler Jam 2023.genruntimeconfig.cache
+C:\Users\Noose\Projects\DungeonCrawlerJam2023\.godot\mono\temp\obj\Debug\ref\Dungeon Crawler Jam 2023.dll
